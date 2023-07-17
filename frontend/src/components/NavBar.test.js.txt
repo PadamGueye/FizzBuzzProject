@@ -1,0 +1,22 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import NavBar from './NavBar';
+
+describe('NavBar', () => {
+  test.each([
+    [200, 'background-active', 'background-inactive'],
+    [100, 'background-inactive', 'background-active'],
+  ])(
+    'should have "%s" class when scrollHeight is %s',
+    (scrollHeight, activeClass, inactiveClass) => {
+      // Mock the window scrollY value
+      Object.defineProperty(window, 'scrollY', { value: scrollHeight });
+
+      render(<NavBar />);
+
+      const navBarElement = screen.getByTestId('nav-bar');
+      expect(navBarElement).toHaveClass(activeClass);
+      expect(navBarElement).not.toHaveClass(inactiveClass);
+    }
+  );
+});
