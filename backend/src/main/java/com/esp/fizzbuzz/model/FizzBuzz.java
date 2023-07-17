@@ -31,6 +31,14 @@ public class FizzBuzz {
 		this.value = value;
 		this.stage = stage;
 	}
+	
+	public FizzBuzz(Long id, int digit, String value, Stage stage) {
+		super();
+		this.id = id;
+		this.digit = digit;
+		this.value = value;
+		this.stage = stage;
+	}
 
 	public Long getId() {
 		return id;
